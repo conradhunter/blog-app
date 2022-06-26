@@ -1,7 +1,7 @@
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { collection, deleteDoc, getDocs, doc } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 
 const Home = ({isAuth}) => {
@@ -11,18 +11,14 @@ const Home = ({isAuth}) => {
 
     const postCollection = collection(db, "posts");
 
-    const deletePost = async (id) => {
-        const postDoc = doc(db, 'posts', id);
-        await deleteDoc(postDoc);
-    }
-
     useEffect(() => {
         const getPosts = async () => {
             const data = await getDocs(postCollection);
             setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
         };
         getPosts();
-    }, [deletePost]);
+    }, []);
+
 
 
 
@@ -33,13 +29,11 @@ const Home = ({isAuth}) => {
                             <div className='postHeader'>
                                 <div className='title'><h1>{post.title}</h1></div>
                             </div>
-                            <div className="deletePost">
-                                {!isAuth && post.author.id === auth.currentUser.uid && (<button onClick={() => {
-                                    deletePost(post.id);
-                                }}>
+                            {/* <div className="deletePost">
+                                <button >
                                     <FontAwesomeIcon icon={faTrash} />
-                                </button>)}
-                            </div>
+                                </button>
+                            </div> */}
                             <div className='postCategory'>
                                 <h5>{post.category}</h5>
                             </div>
