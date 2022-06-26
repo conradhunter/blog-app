@@ -18,15 +18,37 @@ nav {
     display: flex;
 }
 
+#nav__bar--links li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .nav__bar--link {
     text-decoration: none;
     color: #000;
     margin: 8px;
     font-weight: 500;
     transition: all 450ms ease;
+    font-size: 16px;
 }
 
 .nav__bar--link:hover {
     color: aqua;
 }
 
+#nav__signOut--btn {
+    background: none;
+    border: none;
+    text-decoration: none;
+    color: #000;
+    margin: 8px;
+    font-weight: 500;
+    transition: all 450ms ease;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+#nav__signOut--btn:hover {
+    color: aqua;
+}

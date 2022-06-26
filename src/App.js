@@ -11,7 +11,7 @@ import { auth } from "./firebase";
 import About from "./pages/About";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
 
   const signUserOut = () => {
     signOut(auth).then(() => {
@@ -39,27 +39,28 @@ function App() {
                 About
               </Link>
             </li>
-            <li>
-              <Link className="nav__bar--link" to="/create-post">
-                Create
-              </Link>
-            </li>
+            
             <li>
               {!isAuth ? (
                 <Link className="nav__bar--link" to="/sign-in">
                   Sign In
                 </Link>
               ) : (
-                <button onClick={signUserOut}>Sign Out</button>
+                <>
+                  <Link className="nav__bar--link" to="/create-post">
+                    Create
+                  </Link>
+                  <button id="nav__signOut--btn" onClick={signUserOut}>Sign Out</button>
+                </>
               )}
             </li>
           </ul>
         </div>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isAuth={isAuth} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/create-post" element={<CreatePost />} />
+        <Route path="/create-post" element={<CreatePost isAuth={isAuth} />} />
         <Route path="/sign-in" element={<SignIn setIsAuth={setIsAuth} />} />
       </Routes>
     </Router>

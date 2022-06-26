@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./pages.css";
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
-const CreatePost = () => {
+const CreatePost = ({isAuth}) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [tags, setTags] = useState("");
@@ -24,6 +24,12 @@ const CreatePost = () => {
     navigate('/');
   };
 
+  useEffect(() => {
+    if (!isAuth) {
+        navigate('/sign-in');
+    }
+  }, []);
+
   return (
     <div id="createPost__page">
       <div id="createPost__container">
@@ -32,6 +38,7 @@ const CreatePost = () => {
           <label htmlFor="">Title:</label>
           <input
             type="text"
+            required
             placeholder="Title..."
             onChange={(event) => {
               setTitle(event.target.value);
@@ -43,20 +50,23 @@ const CreatePost = () => {
           <select
             name="category"
             id=""
+            required
             onChange={(event) => {
               setCategory(event.target.value);
             }}
           >
-            <option value="marketing">Marketing</option>
-            <option value="ecommerce">eCommerce</option>
-            <option value="web development">Web Development</option>
-            <option value="business">Business</option>
+            <option value="pick a category" disabled='disabled'>Category</option>
+            <option value="Marketing">Marketing</option>
+            <option value="eCommerce">eCommerce</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Business">Business</option>
           </select>
         </div>
         <div id="inputGroup">
           <label htmlFor="">Tags:</label>
           <input
             type="text"
+            required
             placeholder="#..."
             onChange={(event) => {
               setTags(event.target.value);
@@ -67,6 +77,7 @@ const CreatePost = () => {
           <label htmlFor="">Post:</label>
           <textarea
             type="text"
+            required
             placeholder="Your post..."
             onChange={(event) => {
               setPostText(event.target.value);
