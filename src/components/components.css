@@ -29,12 +29,25 @@ nav {
     color: #000;
     margin: 8px;
     font-weight: 500;
+    position: relative;
     transition: all 450ms ease;
     font-size: 16px;
 }
 
-.nav__bar--link:hover {
-    color: aqua;
+.nav__bar--link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    height: 2px;
+    width: 0;
+    right: 0;
+    background-color: #000;
+    transition: all 450ms ease;
+}
+
+.nav__bar--link:hover::after {
+    left: 0;
+    width: 100%;
 }
 
 #nav__signOut--btn {

@@ -38,16 +38,15 @@
 
   #createPost__page {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
   }
 
   #createPost__container {
     background-color: #1a1a1a;
     padding: 20px;
     border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     max-width: 500px;
     width: 100%;
     height: fit-content;
@@ -140,4 +139,38 @@
   
   .postAuthor {
     font-size: 18px;
+  }
+
+
+
+  /* ABOUT */
+
+  #about__img {
+    max-width: 350px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  #aboutPage__container {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 70%;
+    margin: 50px auto 0;
+  }
+
+
+
+
+  /* SIGN IN */
+
+  #signIn__page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  #signIn__heading {
+    font-size: 26px;
+    margin-bottom: 50px;
   }
