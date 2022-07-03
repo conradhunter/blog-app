@@ -56,10 +56,10 @@ const CreatePost = ({isAuth}) => {
             }}
           >
             <option value="pick a category" disabled='disabled'>Category</option>
-            <option value="Marketing">Marketing</option>
-            <option value="eCommerce">eCommerce</option>
-            <option value="Web Development">Web Development</option>
-            <option value="Business">Business</option>
+            <option value="Marketing">Skiing</option>
+            <option value="eCommerce">Snowboarding</option>
+            <option value="Web Development">Backcountry</option>
+            <option value="Business">Travel</option>
           </select>
         </div>
         <div id="inputGroup">

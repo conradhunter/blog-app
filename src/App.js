@@ -5,10 +5,9 @@ import SignIn from "./pages/SignIn";
 import CreatePost from "./pages/CreatePost";
 import { useState } from "react";
 import "./components/components.css";
-import logo from "./assets/svd_logo.png";
+import logo from "./assets/shred-logo.png";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase";
-import About from "./pages/About";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
@@ -33,13 +32,7 @@ function App() {
               <Link className="nav__bar--link" to="/">
                 Home
               </Link>
-            </li>
-            <li>
-              <Link className="nav__bar--link" to="/about">
-                About
-              </Link>
-            </li>
-            
+            </li>            
             <li>
               {!isAuth ? (
                 <Link className="nav__bar--link" to="/sign-in">
@@ -59,7 +52,6 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home isAuth={isAuth} />} />
-        <Route path="/about" element={<About />} />
         <Route path="/create-post" element={<CreatePost isAuth={isAuth} />} />
         <Route path="/sign-in" element={<SignIn setIsAuth={setIsAuth} />} />
       </Routes>

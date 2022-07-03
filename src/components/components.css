@@ -7,10 +7,11 @@ nav {
     width: 100%;
     border-bottom: 2px solid #000000;
     padding: 25px 0;
+    background-image: url('../assets/Snow.svg');
 }
 
 #nav__logo {
-    max-width: 200px;
+    max-width: 400px;
 }
 
 #nav__bar--links {

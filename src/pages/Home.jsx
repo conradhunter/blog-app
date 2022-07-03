@@ -1,8 +1,6 @@
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { collection, deleteDoc, getDocs, doc } from 'firebase/firestore';
-import React, { useCallback, useEffect, useState } from 'react';
-import { auth, db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
+import React, {  useEffect, useState } from 'react';
+import {  db } from '../firebase';
 
 const Home = ({isAuth}) => {
 
@@ -29,11 +27,6 @@ const Home = ({isAuth}) => {
                             <div className='postHeader'>
                                 <div className='title'><h1>{post.title}</h1></div>
                             </div>
-                            {/* <div className="deletePost">
-                                <button >
-                                    <FontAwesomeIcon icon={faTrash} />
-                                </button>
-                            </div> */}
                             <div className='postCategory'>
                                 <h5>{post.category}</h5>
                             </div>
